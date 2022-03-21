@@ -1,0 +1,220 @@
+// Lyzza Jem Flores
+class HighAir extends Airline{
+    PlaneSeat: string;
+    weight: number;
+    typeOfFlight: any;
+
+    constructor(
+        name:string,
+        staffs: number,
+        typeOfFlight: string,
+        passengers: number,
+        luggages: number,
+        cost: number,
+        origin: string,
+        destination: string,
+        allowedPets: boolean,
+        ageLimit: number,
+        //sean
+        flightDuration: number,
+        flightGate: string,
+        //Faith
+        luggageLimit: number,
+        seats: number,
+        age: number,
+        //Lyzza
+        PlaneSeat:string,
+        weight:number,
+        payed:boolean,
+        //kim
+        flightCode:number,
+        flightTerminal: number){
+        super(name,
+            staffs,
+            typeOfFlight,
+            passengers,
+            luggages,
+            cost,
+            origin,
+            destination,
+            allowedPets,
+            ageLimit,
+            //sean
+            flightDuration, flightGate, 
+            //faith
+            luggageLimit,
+            seats,
+            age,  
+            //Lyzza
+            PlaneSeat,
+            weight,
+            payed,
+            //kim
+            flightCode, 
+            flightTerminal);
+        this.name = name;
+        this.staffs = staffs;
+        this.typeOfFlight = typeOfFlight;
+        this.passengers = passengers;
+        this.luggages = luggages;
+        this.cost = cost;
+        this.origin = origin;
+        this.destination = destination;
+        this.allowedPets = allowedPets;
+        this.ageLimit = ageLimit;
+        //add
+        this.PlaneSeat = PlaneSeat;
+        this.weight = weight;
+        this.payed = payed ;
+    };
+    addPassenger():any {
+        if(this.payed === true){
+            console.log( `Succesfuly added a passenger!`)
+        };
+    };
+    removePassenger():any{
+        if(this.payed === false){
+              console.log( `${this.name} was not able to pay
+Unable to add a passenger!`)
+          }else{
+              console.log( `Unable to add a passenger!`)
+              
+          }
+          console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+      };
+    getPassengerInfo():any {
+        console.log( `Passenger name: ${this.name}`)
+        console.log(`With pets?: ${this.allowedPets}`)
+    };
+    checkIn():any {
+        console.log(
+       `Successfullly checked in for flight.
+Welcome ${this.name} to HighAir`)
+    };
+    luggage(weight:number){
+        if(this.luggages >= 2){
+            if(weight < 15){
+                console.log(`Added PHP. ${0} for extra luggages`)
+                this.cost + 0
+            }else{
+                const add = Number(weight / 15)
+                console.log(`Added PHP. ${Math.round(100 * add)} for extra luggages`)
+                this.cost + Math.round(100 * add)
+            }
+        }
+    };
+    ticketPrice(PlaneSeat:string):any{
+        console.log(
+            `Type of Flight: ${this.typeOfFlight}
+Plane seat : ${PlaneSeat}`)
+        if(this.typeOfFlight === 'International'){
+            if(PlaneSeat === 'First Class'){
+                console.log(`A total of PHP. ${this.cost + 20_000}`)
+                console.log(`Includes: Suite, Toiletries, Black leather notebook w/ pen, others...`)
+            } else if(PlaneSeat === 'Business Class'){
+                console.log(`A total of PHP. ${this.cost + 15_000}`)
+                console.log(`Includes: Customary drink, Toiletries, Blankets, others..`)
+            } else if (PlaneSeat === 'Economy'){
+                console.log(`A total of PHP. ${this.cost + 7_000}`)
+                console.log(`Includes: Blanket, Small cushion`)
+            }
+        }else if(this.typeOfFlight === 'Domestic'){
+            if(PlaneSeat === 'First Class'){
+                console.log(`A total of PHP. ${this.cost + 12_000}`)
+                console.log(`Includes: Suite, Toiletries, others...`)
+            } else if(this.PlaneSeat === 'Business Class'){
+                console.log(`A total of PHP. ${this.cost + 9_000}`)
+                console.log(`Includes: Toiletries, Blankets, others..`)
+            }else if (PlaneSeat === 'Economy'){
+                console.log(`A total of PHP. ${this.cost + 5_000}`)
+                console.log(`Includes: Blanket, Small cushion`)
+            }
+        }
+
+    };
+    checkSeatAvailability():any{
+        if(this.PlaneSeat ==='First Class'){
+            if(Number(this.name) < 3){ 
+                return this.addPassenger()
+            }else{
+                return this.removePassenger()
+            }
+        }else if (this.PlaneSeat ==='Business Class'){
+            if(Number(this.name) < 3){
+                return this.addPassenger()
+            }else{
+                return this.removePassenger()
+            }
+        }else if (this.PlaneSeat ==='Economy'){
+            if(Number(this.name) < 5){
+                return this.addPassenger()
+            }else{
+                return this.removePassenger()
+            }
+        }
+    };
+    getGateInfo():any{
+        const max = 5
+        const gate = Math.round(Math.random() * Math.floor(max))
+        console.log( `Please proceed to gate ${gate}`)
+    };
+    ticket(PlaneSeat:string):any{
+        const date = new Date()
+        const max = 5
+        const gate = Math.round(Math.random() * Math.floor(max))
+        function Result (seat:string){
+            if(PlaneSeat ==='First Class'){
+                return 'First Class'
+            }else if (PlaneSeat ==='Business Class'){
+                return 'Business Class'
+            }else if (PlaneSeat ==='Economy'){
+                return 'Economy'
+            }}
+        console.log(`
+BOARDING PASS:
+
+Name: ${this.name}
+
+From: ${this.origin}
+
+To: ${this.destination}
+
+Flight: ${this.typeOfFlight}
+
+Seat: ${Result(PlaneSeat)} 
+
+Date:${date}
+
+Gate: ${gate}`)
+    };
+};
+
+const HighAir1 = new HighAir(
+/*NAME*/   'Lyzza', 
+/*STAFFS*/     10,
+/*TYPE_OF_FLIGHT*/'International',
+/*PASSENGERS*/  15,
+/*LUGGAGES*/    2, 
+/*COST*/         0, 
+/*ORIGIN*/  'HighAir: Manila,Philippines',
+/*DESTINATION*/"Tokyo-Narita: Chiba,Japan", 
+/*PETS*/        true, 
+/*AGE_lIMIT*/   18,
+/*flightDuration*/ 0,
+/*flightflightGate*/ '',
+/**/0,0,0,
+/*PLANE_SEAT*/  '',
+/*WEIGHT*/      0,
+/*PAYED*/       true,
+/*flightCode*/  0,
+/*flightTerminal*/  0)
+HighAir1.addPassenger()
+
+HighAir1.getPassengerInfo()
+HighAir1.luggage(12)
+HighAir1.ticketPrice('First Class')
+HighAir1.checkSeatAvailability()
+HighAir1.getGateInfo()
+HighAir1.checkIn()
+HighAir1.ticket('First Class')
+HighAir1.removePassenger()
