@@ -1,0 +1,150 @@
+//Faith Nina Marie Magsael
+class Wizzflight extends Airline {
+
+    //additional attributes
+    luggageLimit: number;
+    seats: any;
+    age: number
+
+
+    constructor(name: string, staffs: number, 
+        typeOfFlight: string, passengers: number, luggages: number, 
+        cost: number, origin: string, destination: string, allowedPets: boolean, ageLimit: number,
+        //sean
+        flightDuration: number,
+        flightGate: string,
+        //Faith
+        luggageLimit: number,
+        seats: number,
+        age: number,
+        //Lyzza
+        PlaneSeat:string,
+        weight:number,
+        payed:boolean,
+        //kim
+        flightCode:number,
+        flightTerminal: number) {
+        super(name, staffs, typeOfFlight, passengers, luggages, cost, 
+            origin, destination, allowedPets, ageLimit,
+            //sean
+            flightDuration, flightGate, 
+            //Faith
+            luggageLimit,
+            seats,
+            age,
+            //Lyzza
+            PlaneSeat,
+            weight,
+            payed,
+            //kim
+            flightCode, 
+            flightTerminal);
+        this.name = name;
+        this.staffs = staffs;
+        this.typeOfFlight = typeOfFlight;
+        this.passengers = passengers;
+        this.luggages = luggages;
+        this.cost = cost;
+        this.origin = origin;
+        this.destination = destination;
+        this.allowedPets = allowedPets;
+        this.ageLimit = ageLimit;
+    }
+    
+    public getPassengerInfo(): any{
+        console.log(`Name: ${this.name}
+        Age: ${this.age}
+        Luggage: ${this.luggages}`)
+    }
+    
+    public addpassenger(name: string, age: number, luggage: number) {
+        if (age <= this.ageLimit && luggage <= this.luggageLimit) {
+        this.seats = this.seats + 1
+        console.log(`${name} has been added.`)}
+
+        else {
+            console.log(`${name} cannot be added to the flight.`)
+        }
+    }
+
+    public removepassenger(name: string) {
+        this.seats = this.seats + 1
+        this.passengers = this.passengers + 1
+        console.log(`${name} has been removed.`)
+    }
+
+    public rescheduleFlight(newDate: string) {
+        console.log(`Flight has been rescheduled to ${newDate}`)
+    }
+
+    public cancelFlight(flightName: string){
+        console.log(`${flightName} has been cancelled.`)
+    }
+    
+    public ticketPrice(PlaneSeat: string): any{
+        PlaneSeat = PlaneSeat
+        if(PlaneSeat === `economy` || PlaneSeat === `Economy` || PlaneSeat === `ECONOMY`) {
+            console.log(`You booked for an Economy. Total price is 2000 Php.`)
+        } else if (PlaneSeat === `premium economy`|| PlaneSeat === `Premium Economy` ||
+        PlaneSeat === `PREMIUM ECONOMY`) {
+            console.log(`You booked for a Premium Economy. Total price is 2500 Php.`)
+        } else if (PlaneSeat === `business class` || PlaneSeat === `Business Class` || 
+        PlaneSeat === `BUSINESS CLASS`) {
+            console.log(`You booked for a Business Class. Total price is 3000 Php.`)
+        } else if (PlaneSeat === `first class` || PlaneSeat === `First Class` || PlaneSeat === `FIRST CLASS`) {
+            console.log(`You booked for a First Class. Total price is 3500 Php.`)
+        } else (
+            console.log(`Invalid keyword.`)
+        )
+        
+    }
+
+    public seatAvailability(bookedSeats: number) {
+        let availableSeats = this.passengers - bookedSeats;
+        if (availableSeats > 0) {
+            console.log(`Flight has ${availableSeats} available seats.`)
+        } else (
+            console.log(`Flight is fully booked.`)
+        )
+    }
+
+    public generateTicket(): any{
+        console.log(`
+        PASSENGER INFORMATION
+        Name: ${this.name}
+        Age: ${this.age}
+        Airline Seat: ${this.typeOfFlight}
+        
+        FLIGHT DETAILS
+        Departure: ${this.origin}
+        Destinatuion: ${this.destination}`)
+    }
+    public promo(code: string) {
+        if (code === "Air2022") {
+            console.log(`Congratulations! You received 25% off discount for your next flight.`)
+        } else if (code === "WizzFlight1234") {
+            console.log(`Congratulations!You received 50% off discount for your next flight.`)
+        } else {
+            console.log(`Invalid code. Try again.`)
+        }
+    }
+
+    public announcement(flightName: string, message: string){
+        console.log(`This is the announcement for flight ${flightName} to ${this.destination}.
+        ${message}`)
+    }
+}
+
+
+const Air1 = new Wizzflight ('Stella', 0, 'Economy', 0, 19, 0, 'Iloilo', 'Manila', false, 1,0,'',
+ 23, 15, 19, '', 0, true,0,0)
+Air1.getPassengerInfo()
+Air1.addPassenger()
+Air1.removePassenger()
+Air1.rescheduleFlight('March 26, 2021')
+Air1.cancelFlight('Air12345')
+Air1.ticketPrice('economy');
+Air1.seatAvailability(50);
+Air1.generateTicket()
+Air1.promo('Air2022');
+Air1.announcement('Air12345', `Please have your boarding pass and identification ready.Thank you`)
