@@ -1,0 +1,146 @@
+// Sean Namo
+class AirASean extends Airline {
+    flightGate: string;
+    flightDuration: number;
+
+    constructor(name: string,
+        staffs: number,
+        typeOfFlight: string,
+        passengers: number,
+        luggages: number,
+        cost: number,
+        origin: string,
+        destination: string,
+        allowedPets: boolean,
+        ageLimit: number,
+        //sean
+        flightDuration: number,
+        flightGate: string,
+        //Faith
+        luggageLimit: number,
+        seats: number,
+        age: number,
+        //Lyzza
+        PlaneSeat:string,
+        weight:number,
+        payed:boolean,
+        //kim
+        flightCode:number,
+        flightTerminal: number) {
+
+        super(name, staffs, typeOfFlight, passengers, luggages, cost, 
+            origin, destination, allowedPets, ageLimit,
+            //sean
+            flightDuration, flightGate, 
+            //faith
+            luggageLimit,
+            seats,
+            age, 
+            //Lyzza
+            PlaneSeat,
+            weight,
+            payed,
+            //kim
+            flightCode, 
+            flightTerminal);
+        this.name = name;
+        this.staffs = staffs;
+        this.typeOfFlight = typeOfFlight;
+        this.passengers = passengers;
+        this.luggages = luggages;
+        this.cost = cost;
+        this.origin = origin;
+        this.destination = destination;
+        this.allowedPets = allowedPets;
+        this.flightDuration = flightDuration;
+        this.flightGate = flightGate;
+        this.ageLimit = ageLimit;
+
+    }
+
+    public staffInfo(): string {
+        return `Hi, ${this.name}! We currently have ${this.staffs} and growing staffs in our airline company!`
+    }
+
+    public getPassengerInfo(): string {
+        return `
+        Passenger Name: ${this.name}
+        Flight Origin: ${this.origin}
+        Flight Destination: ${this.destination} 
+        `
+    }
+
+    public generateTicket(): string {
+        return `
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        THANK YOU FOR CHOOSING AirASean
+        Passenger Name: ${this.name}
+        Flight Origin: ${this.origin}
+        Flight Destination: ${this.destination} 
+        Class: ${this.typeOfFlight}
+        Total flight time: ${this.flightDuration} 
+
+        Ticket Price: Php${this.cost}
+        `
+    }
+
+    public addLuggage(): number {
+        return this.luggages++
+    }
+    
+    public removeLuggage(): number {
+        return this.luggages--
+    }
+
+    public checkIn(): string {
+        return `${this.name} has finally checked in!`
+    }
+
+    public getGateInfo(): string {
+        return `The gate for your flight will be on gate ${this.flightGate}`
+    }
+
+    public greetPassenger(): string {
+        return `Welcome to AirASean, ${this.name}! We are so thrilled to have this adventure with you! :)`
+    }
+
+    public sayFarewell(): string {
+        return `Thank you so much for flying with us at AirASean! Mabuhay! :)`
+    }
+
+    public displayGateInfo(): string {
+        return `If you don't know which gate your flight is, it is on gate ${this.flightGate} in the departure area.`
+    }
+}
+
+// new instance of a passenger
+const passenger1 = new AirASean('Sean', 20, 'First Class', 120, 
+5, 17500, 'PH', 'EU', true, 5, 8, 'G',0,0,0, '', 0, true,0,0);
+
+// greets the passenger
+console.log(passenger1.greetPassenger());
+
+// checks in the passenger 
+console.log(passenger1.checkIn());
+
+// informs the passenger of the gate info
+console.log(passenger1.getGateInfo());
+
+// informs the passenger about company size
+console.log(passenger1.staffInfo());
+
+// displays passenger info
+console.log(passenger1.getPassengerInfo());
+
+// generates the ticket of the passenger
+console.log(passenger1.generateTicket());
+
+// adds luggage count to the passenger
+console.log("Current luggage count:", passenger1.addLuggage(), "\nUpdated luggage count:", passenger1.luggages);
+
+// subtracts the luggage count for the passenger
+passenger1.removeLuggage()
+console.log("Removing luggage count...", "\nCurrent luggage count:", passenger1.luggages);
+
+// greets goodbye to passenger
+console.log(passenger1.sayFarewell());
