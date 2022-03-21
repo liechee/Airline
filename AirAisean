@@ -1,5 +1,5 @@
 // Sean Namo
-class AirASean extends Airline {
+class AirAiSean extends Airline {
     flightGate: string;
     flightDuration: number;
 
@@ -114,7 +114,7 @@ class AirASean extends Airline {
 }
 
 // new instance of a passenger
-const passenger1 = new AirASean('Sean', 20, 'First Class', 120, 
+const passenger1 = new AirAiSean('Sean', 20, 'First Class', 120, 
 5, 17500, 'PH', 'EU', true, 5, 8, 'G',0,0,0, '', 0, true,0,0);
 
 // greets the passenger
