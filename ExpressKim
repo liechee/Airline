@@ -1,0 +1,118 @@
+//Kim Penith Canalin
+class ExpressKim extends Airline{
+    flightCode: number;
+    FlightTerminal: number;
+
+    constructor(name: string,
+         staffs: number,
+         typeOfFlight: string,
+         passengers: number,
+         luggages: number,
+         cost: number,
+         origin: string,
+         destination: string,
+         allowedPets: boolean,
+         ageLimits: number,
+         //sean
+         flightDuration: number,
+         flightGate: string,
+         //Faith
+         luggageLimit:number,
+         seats: number, 
+         age: number,
+         //Lyzza
+         planeSeat: string,
+         weight: number,
+         payed: boolean,
+         //kim
+         flightCode:number,
+         flightTerminal: number,) {
+        
+        super(name, staffs, typeOfFlight, passengers, luggages, cost, 
+            origin, destination, allowedPets, ageLimits,
+            //sean
+            flightDuration, flightGate,
+            //Faith
+            luggageLimit, seats,
+            age,
+            //Lyzza
+            planeSeat, weight,
+            payed,
+            //kim
+            flightCode,flightTerminal,);
+        this.name = name;
+        this.staffs = staffs;
+        this.typeOfFlight = typeOfFlight;
+        this.passengers = passengers;
+        this.luggages = luggages;
+        this.cost = cost;
+        this.origin = origin,
+        this.destination = destination,
+        this.allowedPets = allowedPets;
+        this.ageLimit = ageLimits
+
+    }
+
+    public checkIn(): string {
+        return (`${this.name} has finally checked in!`)
+    }
+
+    public getPassengerInfo(): string {
+        return  `
+        Passenger Name: ${this.name}
+        Flight destination: ${this.destination}
+        Passenger age: ${this.ageLimit}`
+    }
+
+    public AddLuggage(): number {
+        return this.luggages++
+    }
+
+    public removeLuggages(): number {
+        return this.luggages--
+    }
+
+    public generateTicket(): string {
+        return `
+        THANK YOU FOR BOOKING A TICKET IN ExpressKim
+        Passengers Name: ${this.name}
+        Total Luggages: ${this.luggages}
+        Type of Pet: ${this.allowedPets}
+        `
+    }
+
+    public getTerminalInfo(): string {
+        return `The Entrway for your Flight will be on Terminal ${this.FlightTerminal}`
+    }
+
+    public addPassengers(): number {
+        return this.passengers++
+    }
+
+    public guidePassengers(): string {
+        return `Hello, Good Afternoon/Good morning ${this.name} this way to your Disignated Flight`
+    }
+
+    public pilotInfo(): string {
+        return `Hi, ${this.name} I am the pilot of this aircraft`
+    }
+
+    public cancelFlight(): string {
+        return `The ${this.flightCode} has been canceled`
+    }
+
+}
+
+const UltraExpressKim = new ExpressKim ('Kim', 15, 'First-Class', 535, 3, 2350, 'PH', 'BRAZIL', 
+false, 8, 45, '', 4, 500, 10,'', 30, true, 380-800 , 3,)
+
+console.log(UltraExpressKim.addLuggage());
+console.log(UltraExpressKim.cancelFlight());
+console.log(UltraExpressKim.addPassenger);
+console.log(UltraExpressKim.checkIn());
+console.log(UltraExpressKim.generateTicket());
+console.log(UltraExpressKim.getPassengerInfo());
+console.log(UltraExpressKim.getTerminalInfo());
+console.log(UltraExpressKim.pilotInfo());
+console.log(UltraExpressKim.removeLuggage());
+console.log(UltraExpressKim.guidePassengers());
