@@ -100,11 +100,10 @@ class Wizzflight extends Airline {
     }
 
     public seatAvailability(bookedSeats: number) {
-        let availableSeats = this.passengers - bookedSeats;
-        if (availableSeats > 0) {
-            console.log(`Flight has ${availableSeats} available seats.`)
-        } else (
+        if (bookedSeats >= 100) {
             console.log(`Flight is fully booked.`)
+        } else (
+            console.log(`Flight has ${bookedSeats} available seats.`)
         )
     }
 
